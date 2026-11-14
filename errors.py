@@ -3,17 +3,25 @@ import os
 import sys
 
 # LBYL - Look Before You Leap
-if os.path.exists("names.txt"):
-   print(" O arquivo existe")
-   input("...") # Race Condition
-    names = open("names.txt").readlines()
-else:
-    print("Error] File names.txt not found.")
+# EAFP - Easy to ASK Forgiveness than permisson
+# É mais fácil pedir perdão do que permissão
+
+
+try:
+   names = open("names.txt").readlines()
+   # ZeroDivision Error
+except FileNotFoundError:
+    print("[Error] File names.txt not found.")
     sys.exit(1)
 
-if len (names) >=3:
-    print(names[2])
 else:
+    print("Sucesso")
+finally:
+    print("Execute isso sempre!")
+
+try:
+    print(names[2])
+except:
     print("[Error] Missing name in the list")
     sys.exit(1)
 
