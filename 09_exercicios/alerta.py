@@ -19,7 +19,6 @@ umidade: 90
 ...
 "ALERTA!!! 🥵♒ Perigo de calor úmido"
 """
-import logging
 
 log = logging.Logger("alerta")
 

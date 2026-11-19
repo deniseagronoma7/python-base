@@ -89,8 +89,14 @@ user = os.getenv("USER", "Denise Gomes")
 
 
 # 4. Abre o arquivo e escreve a linha de histórico
-with open(filepath, "a") as file_:
-    file_.write(f"{timestamp} - {user} - {operacao}, {n1}, {n2} = {resultado}\n")
+try:
+    with open(filepath, "a") as file_:
+        file_.write(f"{timestamp} - {user} - {operacao}, {n1}, {n2} = {resultado}\n")
+except PermissionError as e:
+    print(str(e))
+    sys.exit(1)
 
+
+print (f"O resultado é {resultado}")
 
 
